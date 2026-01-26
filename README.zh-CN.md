@@ -30,9 +30,53 @@ npm update -g @your-org/your-skill
 
 ## 💡 为什么用 npm 管理技能？
 
-手动分发技能需要下载文件、复制到 `~/.claude/skills/`，每次更新都要重复这些步骤。没有版本控制，没有依赖管理，没有发现机制。
+有三种方式可以分发 AI Agent 技能。让我们来比较一下：
 
-**npm 解决了这些问题**：
+### 1. 手动复制文件（❌ 不推荐）
+
+```bash
+# 下载文件
+git clone https://github.com/user/skills
+
+# 手动复制到 skills 目录
+cp -r skills/my-skill ~/.claude/skills/
+
+# 每次更新都要重复这些步骤
+```
+
+**问题**：
+- 没有版本控制
+- 没有依赖管理
+- 需要手动更新
+- 没有发现机制
+- 容易出错
+
+### 2. Vercel 的 add-skill（✅ 适合 Git 仓库）
+
+```bash
+# 直接从 git 仓库安装
+npx add-skill vercel-labs/agent-skills
+
+# 安装特定技能
+npx add-skill vercel-labs/agent-skills --skill frontend-design
+
+# 安装到特定工具
+npx add-skill vercel-labs/agent-skills -a claude-code -a cursor
+```
+
+**优势**：
+- ✅ 基于 Git 的分发
+- ✅ 支持 23+ 种 AI 编程工具
+- ✅ 无需配置
+- ✅ 工具无关的生态系统
+
+**局限**：
+- ⚠️ 没有语义化版本（使用 git 提交）
+- ⚠️ 没有自动依赖管理
+- ⚠️ 没有中心化注册表/发现机制
+- ⚠️ 需要 git 仓库访问权限
+
+### 3. npm 包（✅ 发布技能的最佳选择）
 
 ```bash
 # 使用标准命令安装/更新/卸载
@@ -48,11 +92,45 @@ npm install --save-dev @your-org/skill-name
 ```
 
 **核心优势**：
-- **版本控制** - 语义化版本，轻松升级/回滚
-- **全球分发** - 发布一次，通过 npm CDN 全球可用
-- **可发现性** - 在 npmjs.com 上可搜索
-- **企业级** - 支持私有仓库用于内部技能
-- **生态集成** - 与 CI/CD、monorepos、现有工具集成
+- ✅ **版本控制** - 语义化版本，轻松升级/回滚
+- ✅ **全球分发** - 发布一次，通过 npm CDN 全球可用
+- ✅ **可发现性** - 在 npmjs.com 上可搜索
+- ✅ **企业级** - 支持私有仓库用于内部技能
+- ✅ **生态集成** - 与 CI/CD、monorepos、现有工具集成
+- ✅ **依赖管理** - 自动依赖解析
+- ✅ **生命周期钩子** - 自动安装/卸载脚本
+
+### 应该选择哪种方式？
+
+**使用 npm 包，当你**：
+- 希望发布稳定的、有版本控制的技能
+- 需要依赖管理
+- 想要全局可发现性
+- 为企业/团队构建
+
+**使用 add-skill，当你**：
+- 本地开发技能
+- 从 git 仓库测试技能
+- 分发内部/团队技能
+- 不需要版本控制
+
+**两全其美**：
+本模板结合了两种方式！使用本模板创建的技能：
+- ✅ 可以发布到 npm 进行版本化分发
+- ✅ 也可以通过 `npx add-skill` 从 git 仓库安装
+- ✅ 内部使用 `add-skill` 进行自动安装
+
+**示例工作流**：
+```bash
+# 开发阶段：使用 add-skill 测试
+npx add-skill github.com/your-org/your-skill --skill my-skill
+
+# 生产环境：使用 npm 发布稳定版本
+npm install -g @your-org/your-skill
+
+# 更新：使用 npm 进行版本控制
+npm update -g @your-org/your-skill
+```
 
 技能成为一流的软件构件，使用与 React、Express 等数百万包相同的基础设施。
 

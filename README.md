@@ -30,9 +30,53 @@ npm update -g @your-org/your-skill
 
 ## 💡 Why npm for Skills?
 
-Manual skill distribution requires downloading files, copying to `~/.claude/skills/`, and repeating for every update. No versioning, no dependency management, no discovery.
+There are three ways to distribute AI agent skills. Let's compare them:
 
-**npm solves this:**
+### 1. Manual File Copying (❌ Not Recommended)
+
+```bash
+# Download files
+git clone https://github.com/user/skills
+
+# Manually copy to skills directory
+cp -r skills/my-skill ~/.claude/skills/
+
+# Repeat for every update
+```
+
+**Problems:**
+- No versioning
+- No dependency management
+- Manual updates required
+- No discoverability
+- Error-prone
+
+### 2. Vercel's add-skill (✅ Good for Git Repos)
+
+```bash
+# Install directly from git repository
+npx add-skill vercel-labs/agent-skills
+
+# Install specific skill
+npx add-skill vercel-labs/agent-skills --skill frontend-design
+
+# Install to specific agents
+npx add-skill vercel-labs/agent-skills -a claude-code -a cursor
+```
+
+**Benefits:**
+- ✅ Git-based distribution
+- ✅ Works with 23+ AI coding tools
+- ✅ No configuration needed
+- ✅ Agent-agnostic ecosystem
+
+**Limitations:**
+- ⚠️ No semantic versioning (uses git commits)
+- ⚠️ No automatic dependency management
+- ⚠️ No centralized registry/discovery
+- ⚠️ Requires git repository access
+
+### 3. npm Packages (✅ Best for Published Skills)
 
 ```bash
 # Install/update/uninstall with standard commands
@@ -48,11 +92,45 @@ npm install --save-dev @your-org/skill-name
 ```
 
 **Core benefits:**
-- **Version control** - Semantic versioning, upgrade/rollback easily
-- **Global distribution** - Publish once, available worldwide via npm's CDN
-- **Discoverability** - Searchable on npmjs.com
-- **Enterprise ready** - Private registries for internal skills
-- **Ecosystem integration** - Works with CI/CD, monorepos, existing tooling
+- ✅ **Version control** - Semantic versioning, upgrade/rollback easily
+- ✅ **Global distribution** - Publish once, available worldwide via npm's CDN
+- ✅ **Discoverability** - Searchable on npmjs.com
+- ✅ **Enterprise ready** - Private registries for internal skills
+- ✅ **Ecosystem integration** - Works with CI/CD, monorepos, existing tooling
+- ✅ **Dependency management** - Automatic dependency resolution
+- ✅ **Lifecycle hooks** - Automatic install/uninstall scripts
+
+### Which One Should You Use?
+
+**Use npm packages when:**
+- You want to publish stable, versioned skills
+- You need dependency management
+- You want global discoverability
+- You're building for enterprise/teams
+
+**Use add-skill when:**
+- Developing skills locally
+- Testing skills from git repos
+- Distributing internal/team skills
+- You don't need versioning
+
+**Best of both worlds:**
+This template combines both approaches! Skills created with this template:
+- ✅ Can be published to npm for versioned distribution
+- ✅ Can also be installed via `npx add-skill` from git repos
+- ✅ Include automatic install scripts using `add-skill` under the hood
+
+**Example workflow:**
+```bash
+# Development: Use add-skill for testing
+npx add-skill github.com/your-org/your-skill --skill my-skill
+
+# Production: Use npm for stable releases
+npm install -g @your-org/your-skill
+
+# Update: Use npm for version control
+npm update -g @your-org/your-skill
+```
 
 Skills become first-class software artifacts, using the same infrastructure as React, Express, and millions of other packages.
 
