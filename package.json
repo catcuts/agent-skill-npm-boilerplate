@@ -1,0 +1,40 @@
+{
+  "name": "@YOUR-ORG/YOUR-SKILL-NAME",
+  "version": "1.0.0",
+  "description": "YOUR SKILL DESCRIPTION - Brief description of what this skill does",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "node scripts/install-skill.js",
+    "preuninstall": "node scripts/uninstall-skill.js",
+    "test": "node scripts/install-skill.js --dry-run",
+    "install:global": "node scripts/install-skill.js --global",
+    "install:local": "node scripts/install-skill.js --local",
+    "lint": "echo 'Add your linting commands here'"
+  },
+  "files": [
+    "SKILL.md",
+    "scripts/"
+  ],
+  "optionalDependencies": {
+    "add-skill": "^1.0.29"
+  },
+  "keywords": [
+    "claude-code",
+    "skill",
+    "ai-assistant",
+    "YOUR-KEYWORDS-HERE"
+  ],
+  "author": "YOUR NAME <your.email@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YOUR-USERNAME/YOUR-REPO-NAME/issues"
+  },
+  "homepage": "https://github.com/YOUR-USERNAME/YOUR-REPO-NAME#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
