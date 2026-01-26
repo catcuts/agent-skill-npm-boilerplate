@@ -10,10 +10,10 @@ AI 编程工具（Claude Code、Cursor、Windsurf）支持自定义"技能"（Sk
 
 ```bash
 # 安装
-npm install -g @your-org/git-commit-helper
+npm install -g @your-org/your-skill
 
 # 更新
-npm update -g @your-org/git-commit-helper
+npm update -g @your-org/your-skill
 
 # 自动安装到 ~/.claude/skills/ 等
 ```
@@ -404,7 +404,7 @@ sudo npm install -g @your-org/your-skill
 
 使用本模板构建的技能：
 
-- `@your-org/git-commit-helper` - 生成符合规范的提交信息
+- `@your-org/your-skill` - 生成符合规范的提交信息
 - `@your-org/code-reviewer` - 自动代码审查辅助
 - `@your-org/test-generator` - 从代码生成测试用例
 

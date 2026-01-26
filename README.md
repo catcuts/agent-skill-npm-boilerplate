@@ -10,10 +10,10 @@ AI coding tools (Claude Code, Cursor, Windsurf) support custom "skills" - reusab
 
 ```bash
 # Install
-npm install -g @your-org/git-commit-helper
+npm install -g @your-org/your-skill
 
 # Update
-npm update -g @your-org/git-commit-helper
+npm update -g @your-org/your-skill
 
 # It just works - installs to ~/.claude/skills/, ~/.cursor/skills/, etc.
 ```
@@ -406,7 +406,7 @@ This template is [MIT licensed](LICENSE). Skills you create from this template c
 
 Skills built with this template:
 
-- `@your-org/git-commit-helper` - Generate conventional commit messages
+- `@your-org/your-skill` - Generate conventional commit messages
 - `@your-org/code-reviewer` - Automated code review assistance
 - `@your-org/test-generator` - Generate test cases from code
 
