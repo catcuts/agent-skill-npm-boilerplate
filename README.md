@@ -1,175 +1,178 @@
 # Agent Skill NPM Boilerplate
 
-> **像发布 npm 包一样分发 AI Agent 技能**
+> **Distribute AI agent skills like any other npm package**
 
-AI 编程工具（Claude Code、Cursor、Windsurf）支持自定义"技能"（Skills）—— 可复用的指令，用于扩展 Agent 的能力。但手动分发技能意味着复制文件、没有版本控制、更新困难。
+AI coding tools (Claude Code, Cursor, Windsurf) support custom "skills" - reusable instructions that extend agent capabilities. But distributing them means manual file copying, no versioning, and painful updates.
 
-**本模板让你可以将技能发布到 npm：**
+**This template lets you publish skills to npm:**
 
 ```bash
-# 安装
+# Install
 npm install -g @your-org/git-commit-helper
 
-# 更新
+# Update
 npm update -g @your-org/git-commit-helper
 
-# 自动安装到 ~/.claude/skills/ 等
+# It just works - installs to ~/.claude/skills/, ~/.cursor/skills/, etc.
 ```
 
-**为什么这很重要**：技能成为标准的软件构件，拥有语义化版本控制、依赖管理、私有仓库和全局发现能力。使用与 React 和 Express 相同的基础设施。
+**Why this matters:** Skills become proper software artifacts with semantic versioning, dependency management, private registries, and global discovery. Same infrastructure that distributes React and Express.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
-**快速开始**：Fork 本模板，编辑 `SKILL.md`，运行 `npm publish`。你的技能现在可以全球安装了。
+**Quick start:** Fork this template, edit `SKILL.md`, run `npm publish`. Your skill is now installable worldwide.
 
-## 💡 为什么用 npm 管理技能？
+**中文文档**: [README.zh-CN.md](README.zh-CN.md)
 
-手动分发技能需要下载文件、复制到 `~/.claude/skills/`，每次更新都要重复这些步骤。没有版本控制，没有依赖管理，没有发现机制。
+## 💡 Why npm for Skills?
 
-**npm 解决了这些问题**：
+Manual skill distribution requires downloading files, copying to `~/.claude/skills/`, and repeating for every update. No versioning, no dependency management, no discovery.
+
+**npm solves this:**
 
 ```bash
-# 使用标准命令安装/更新/卸载
+# Install/update/uninstall with standard commands
 npm install -g @your-org/skill-name
 npm update -g @your-org/skill-name
 npm uninstall -g @your-org/skill-name
 
-# 语义化版本控制
+# Semantic versioning for controlled updates
 npm install @your-org/skill@^2.1.0
 
-# 项目级技能（版本锁定，提交到 git）
+# Project-specific skills (version-locked, committed to git)
 npm install --save-dev @your-org/skill-name
 ```
 
-**核心优势**：
-- **版本控制** - 语义化版本，轻松升级/回滚
-- **全球分发** - 发布一次，通过 npm CDN 全球可用
-- **可发现性** - 在 npmjs.com 上可搜索
-- **企业级** - 支持私有仓库用于内部技能
-- **生态集成** - 与 CI/CD、monorepos、现有工具集成
+**Core benefits:**
+- **Version control** - Semantic versioning, upgrade/rollback easily
+- **Global distribution** - Publish once, available worldwide via npm's CDN
+- **Discoverability** - Searchable on npmjs.com
+- **Enterprise ready** - Private registries for internal skills
+- **Ecosystem integration** - Works with CI/CD, monorepos, existing tooling
 
-技能成为一流的软件构件，使用与 React、Express 等数百万包相同的基础设施。
+Skills become first-class software artifacts, using the same infrastructure as React, Express, and millions of other packages.
 
-## ✨ 特性
+## ✨ Features
 
-- ✅ **官方规范**：完全符合 Claude Code 技能格式规范
-- ✅ **智能安装**：自动检测全局 vs 项目级安装
-- ✅ **渐进式披露**：支持主 SKILL.md + 参考文件
-- ✅ **生命周期管理**：包含安装、更新、卸载脚本
-- ✅ **最佳实践**：遵循官方文档的所有推荐模式
-- ✅ **发布就绪**：只需自定义并发布到 npm
+- ✅ **Official Specification**: Fully compliant with Claude Code skills format
+- ✅ **Smart Installation**: Auto-detects global vs project-level installation
+- ✅ **Progressive Disclosure**: Supports main SKILL.md + reference files
+- ✅ **Lifecycle Management**: Install, update, uninstall scripts included
+- ✅ **Best Practices**: Follows all recommended patterns from official docs
+- ✅ **Ready to Publish**: Just customize and publish to npm
 
-## 🚀 快速开始
+## 🚀 Quick Start
 
-### 方式一：作为 GitHub 模板使用（推荐）
+### Option 1: Use as GitHub Template (Recommended)
 
-这是最简单的方式：
+This is a **GitHub Template Repository**. The easiest way to use it:
 
-1. **点击"Use this template"按钮**（在本仓库顶部）
-2. **命名你的新仓库**（如 `my-awesome-skill`）
-3. **克隆你的新仓库**：
+1. **Click the "Use this template" button** at the top of this repository
+2. **Name your new repository** (e.g., `my-awesome-skill`)
+3. **Clone your new repository**:
    ```bash
    git clone https://github.com/YOUR-USERNAME/my-awesome-skill.git
    cd my-awesome-skill
    ```
-4. **自定义你的技能**（见[自定义指南](#-自定义指南)）
-5. **发布到 npm**：
+4. **Customize your skill** (see [Customization Guide](#-customization-guide))
+5. **Publish to npm**:
    ```bash
    npm login
    npm publish --access public
    ```
 
-### 方式二：直接克隆
+### Option 2: Clone Directly
 
 ```bash
-# 克隆本仓库
+# Clone this repository
 git clone https://github.com/YOUR-USERNAME/agent-skill-npm-boilerplate.git my-skill
 cd my-skill
 
-# 删除 git 历史并重新初始化
+# Remove git history and start fresh
 rm -rf .git
 git init
 
-# 安装依赖（开发用）
+# Install dependencies (for development)
 npm install
 
-# 自定义你的技能
+# Customize your skill
 ```
 
-## 📁 项目结构
+## 📁 Project Structure
 
 ```
 agent-skill-npm-boilerplate/
-├── package.json                # npm 包配置
-├── SKILL.md                   # 技能定义（必需）
-├── scripts/                   # 工具脚本
-│   ├── install-skill.js      # 安装脚本
-│   └── uninstall-skill.js    # 卸载脚本
-├── README.md                  # 本文件（为你的技能自定义）
-├── LICENSE                    # 许可证文件
-└── .gitignore                 # Git 忽略规则
+├── package.json                # npm package configuration
+├── SKILL.md                   # Main skill definition (REQUIRED)
+├── scripts/                   # Utility scripts
+│   ├── install-skill.js      # Installation script
+│   └── uninstall-skill.js    # Uninstallation script
+├── README.md                  # This file (customize for your skill)
+├── README.zh-CN.md            # Chinese documentation
+├── LICENSE                    # License file
+└── .gitignore                 # Git ignore rules
 ```
 
-## 🎨 自定义指南
+## 🎨 Customization Guide
 
-### 步骤 1：更新 package.json
+### Step 1: Update package.json
 
-替换以下占位符：
+Replace the following placeholders:
 
 ```json
 {
-  "name": "@YOUR-ORG/YOUR-SKILL-NAME",        // 修改这个
+  "name": "@YOUR-ORG/YOUR-SKILL-NAME",        // Change this
   "version": "1.0.0",
-  "description": "YOUR SKILL DESCRIPTION",     // 修改这个
-  "author": "YOUR NAME",                       // 修改这个
+  "description": "YOUR SKILL DESCRIPTION",     // Change this
+  "author": "YOUR NAME",                       // Change this
   "repository": {
-    "url": "YOUR-REPO-URL"                     // 修改这个
+    "url": "YOUR-REPO-URL"                     // Change this
   }
 }
 ```
 
-**关于 npm scope**：
-- 如果想在组织下管理技能，使用 scope（`@your-org/skill-name`）
-- 如果是独立包，不使用 scope（`skill-name`）
-- 常见的 scope：`@your-company`、`@your-username` 或自定义如 `@claude-skills`
+**About npm scopes:**
+- Use a scope (`@your-org/skill-name`) if you want to organize skills under your organization
+- Use no scope (`skill-name`) for standalone packages
+- Popular scopes: `@your-company`, `@your-username`, or custom like `@claude-skills`
 
-### 步骤 2：更新 SKILL.md
+### Step 2: Update SKILL.md
 
-编辑 `SKILL.md` 并替换占位符：
+Edit `SKILL.md` and replace placeholders:
 
 ```yaml
 ---
-name: your-skill-name              # 必须与目录名匹配
+name: your-skill-name              # Must match directory name
 description: Your skill description here. Use when [scenarios].
-allowed-tools: Read, Bash          # 你的技能可以使用的工具
+allowed-tools: Read, Bash          # Tools your skill can use
 ---
 ```
 
-**重要提示**：
-- `description` 字段至关重要 —— 它决定了 Claude 何时使用你的技能
-- 包含用户自然会说的关键词
-- 说明具体的使用场景
+**Important tip:**
+- The `description` field is crucial - it determines when Claude uses your skill
+- Include keywords users would naturally say
+- Be specific about use cases
 
-❌ **不好的描述**：
+❌ **Bad description:**
 ```yaml
 description: Helps with files
 ```
 
-✅ **好的描述**：
+✅ **Good description:**
 ```yaml
 description: Analyzes TypeScript files for type errors. Use when checking types, debugging TypeScript issues, or validating .ts files.
 ```
 
-### 步骤 3：编写任务指令
+### Step 3: Write Task Instructions
 
-编辑 `SKILL.md` 的"任务指令"部分：
+Edit the "任务指令" section in `SKILL.md`:
 
 ```markdown
 ## 任务指令
 
-When the user [describes scenario]:
+When the user [describes the scenario when this skill should be used]:
 
 1. **First Step**: Do something
    - Additional details
@@ -181,11 +184,12 @@ When the user [describes scenario]:
 
 3. **Final Step**: Complete the task
    - What output to provide
+   - How to format the response
 ```
 
-### 步骤 4：添加示例
+### Step 4: Add Examples
 
-在 `SKILL.md` 中添加具体的使用示例：
+Add concrete usage examples in `SKILL.md`:
 
 ```markdown
 ## Examples
@@ -200,77 +204,77 @@ When the user [describes scenario]:
 3. Suggest improvements
 ```
 
-### 步骤 5：本地测试
+### Step 5: Test Locally
 
 ```bash
-# 测试安装脚本
+# Test installation script
 npm test
 
-# 实际安装（项目级）
+# Actual installation (project-level)
 npm run install:local
 
-# 检查是否正确安装
+# Check if installed correctly
 ls .claude/skills/YOUR-SKILL-NAME/SKILL.md
 cat .claude/skills/YOUR-SKILL-NAME/SKILL.md
 
-# 在 Claude Code 中验证
-# 询问 Claude："What skills are available?"
+# Verify in Claude Code
+# Ask Claude: "What skills are available?"
 ```
 
-### 步骤 6：发布到 npm
+### Step 6: Publish to npm
 
 ```bash
-# 登录 npm（仅首次）
+# Login to npm (first time only)
 npm login
 
-# 发布你的技能
+# Publish your skill
 npm publish --access public
 ```
 
-## 📖 技能开发最佳实践
+## 📖 Skill Development Best Practices
 
-### 1. 编写清晰的描述
+### 1. Write Clear Descriptions
 
-`SKILL.md` 中的 `description` 字段至关重要 —— 它决定了 Claude 何时使用你的技能：
+The `description` field in SKILL.md is crucial - it determines when Claude uses your skill:
 
 ```yaml
-# ❌ 不好：太模糊
+# ❌ Bad: Too vague
 description: Helps with files
 
-# ✅ 好：具体并包含触发关键词
+# ✅ Good: Specific and includes trigger keywords
 description: Analyzes TypeScript files for type errors. Use when checking types, debugging TypeScript issues, or validating .ts files.
 ```
 
-### 2. 使用渐进式披露
+### 2. Use Progressive Disclosure
 
-保持 SKILL.md 在 500 行以内。将详细内容放在单独的文件中：
+Keep SKILL.md under 500 lines. Put detailed content in separate files:
 
 ```markdown
-# 在 SKILL.md 中
+# In SKILL.md
 For complete API reference, see [reference.md](reference.md)
 For examples, see [examples.md](examples.md)
 ```
 
-Claude 只在需要时加载这些文件，节省上下文。
+Claude will only load these files when needed, saving context.
 
-### 3. 限制工具访问
+### 3. Limit Tool Access
 
-使用 `allowed-tools` 限制你的技能可以做什么：
+Use `allowed-tools` to restrict what your skill can do:
 
 ```yaml
-# 只读技能
+# Read-only skill
 allowed-tools: Read, Grep, Glob
 
-# 可以读取和执行（但不能修改文件）
+# Can read and execute (but not modify files)
 allowed-tools: Read, Bash
 
-# 完全访问
+# Full access
 allowed-tools: Read, Edit, Write, Bash
 ```
 
-### 4. 包含示例
+### 4. Include Examples
 
-在 SKILL.md 中展示具体示例：
+Show concrete examples in your SKILL.md:
 
 ```markdown
 ## Examples
@@ -285,55 +289,55 @@ Claude will:
 3. Suggest improvements
 ```
 
-## 📦 安装行为
+## 📦 Installation Behavior
 
-### 全局安装（推荐）
+### Global Installation (Recommended)
 
 ```bash
 npm install -g @your-org/your-skill
 ```
 
-安装到：`~/.claude/skills/your-skill-name/`
+Installs to: `~/.claude/skills/your-skill-name/`
 
-可用范围：当前用户的所有项目
+Available: Across all projects for the current user
 
-### 项目级安装
+### Project-Level Installation
 
 ```bash
 npm install --save-dev @your-org/your-skill
 ```
 
-安装到：`.claude/skills/your-skill-name/`
+Installs to: `.claude/skills/your-skill-name/`
 
-可用范围：仅当前项目（可以提交到 git）
+Available: Only in this project (can be committed to git)
 
-### 优先级顺序
+### Priority Order
 
-当存在多个技能时：
-1. 企业级（托管设置）
-2. 个人级（`~/.claude/skills/`）
-3. 项目级（`.claude/skills/`）
-4. 插件
+When multiple skills exist:
+1. Enterprise (managed settings)
+2. Personal (`~/.claude/skills/`)
+3. Project (`.claude/skills/`)
+4. Plugin
 
-## 🔧 高级特性
+## 🔧 Advanced Features
 
-### 多文件支持
+### Multiple Files
 
-支持丰富的文档结构：
+Support rich documentation:
 
 ```
 your-skill/
-├── SKILL.md           # 主技能定义（必需）
-├── reference.md       # 详细参考文档
-├── examples.md        # 使用示例
+├── SKILL.md           # Main skill definition (REQUIRED)
+├── reference.md       # Detailed reference documentation
+├── examples.md        # Usage examples
 └── scripts/
-    ├── setup.sh      # 安装后设置
-    └── config.json   # 配置文件
+    ├── setup.sh      # Post-install setup
+    └── config.json   # Configuration file
 ```
 
-### 配置
+### Configuration
 
-让用户自定义你的技能：
+Let users customize your skill:
 
 ```bash
 # scripts/setup.sh
@@ -345,83 +349,82 @@ cat > scripts/config.json <<EOF
 EOF
 ```
 
-## 🐛 故障排查
+## 🐛 Troubleshooting
 
-### 技能未出现
+### Skill Not Appearing
 
 ```bash
-# 检查安装位置
+# Check installation location
 ls -la ~/.claude/skills/
 
-# 验证 SKILL.md 格式
+# Verify SKILL.md format
 cat ~/.claude/skills/your-skill/SKILL.md
 
-# 检查 manifest
+# Check manifest
 cat ~/.claude/skills/.skills-manifest.json
 ```
 
-### 权限错误
+### Permission Errors
 
 ```bash
-# 修复 npm 权限（推荐）
+# Fix npm permissions (recommended)
 mkdir ~/.npm-global
 npm config set prefix '~/.npm-global'
 export PATH=~/.npm-global/bin:$PATH
 
-# 或使用 sudo（不推荐）
+# Or use sudo (not recommended)
 sudo npm install -g @your-org/your-skill
 ```
 
-### 技能未触发
+### Skill Not Triggering
 
-- 确保 `description` 包含用户自然会说到的关键词
-- 直接测试：询问 Claude "Use the your-skill-name skill to..."
+- Make sure the `description` includes keywords users would naturally say
+- Test by asking Claude directly: "Use the your-skill-name skill to..."
 
-## 📚 资源
+## 📚 Resources
 
-- [Claude Code 技能文档](https://code.claude.com/docs/en/skills)
-- [技能最佳实践](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices)
-- [npm 包发布指南](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry)
-- [语义化版本](https://semver.org/lang/zh-CN/)
-- [Conventional Commits](https://www.conventionalcommits.org/zh-hans/)
+- [Claude Code Skills Documentation](https://code.claude.com/docs/en/skills)
+- [Skills Best Practices](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices)
+- [npm Package Publishing Guide](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry)
+- [Semantic Versioning](https://semver.org/)
+- [Conventional Commits](https://www.conventionalcommits.org/)
 
-## 🤝 贡献
+## 🤝 Contributing
 
-欢迎贡献！请：
+Contributions are welcome! Please:
 
-1. Fork 本仓库
-2. 创建功能分支
-3. 进行更改
-4. 提交 Pull Request
+1. Fork this repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
-## 📄 许可证
+## 📄 License
 
-本模板采用 [MIT 许可证](LICENSE)。基于此模板创建的技能可以使用你选择的任何许可证。
+This template is [MIT licensed](LICENSE). Skills you create from this template can use any license you choose.
 
-## 💡 示例
+## 💡 Examples
 
-使用本模板构建的技能：
+Skills built with this template:
 
-- `@your-org/git-commit-helper` - 生成符合规范的提交信息
-- `@your-org/code-reviewer` - 自动代码审查辅助
-- `@your-org/test-generator` - 从代码生成测试用例
+- `@your-org/git-commit-helper` - Generate conventional commit messages
+- `@your-org/code-reviewer` - Automated code review assistance
+- `@your-org/test-generator` - Generate test cases from code
 
-*（发布后在这里添加你的技能！）*
+*(Add your skill here after publishing!)*
 
-## 🙋 获取帮助
+## 🙋 Support
 
-- **问题**：[GitHub Issues](https://github.com/YOUR-USERNAME/agent-skill-npm-boilerplate/issues)
-- **讨论**：[GitHub Discussions](https://github.com/YOUR-USERNAME/agent-skill-npm-boilerplate/discussions)
-- **文档**：[Wiki](https://github.com/YOUR-USERNAME/agent-skill-npm-boilerplate/wiki)
+- **Issues**: [GitHub Issues](https://github.com/YOUR-USERNAME/agent-skill-npm-boilerplate/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/YOUR-USERNAME/agent-skill-npm-boilerplate/discussions)
 
-## 🌟 支持本项目
+## 🌟 Show Your Support
 
-如果你觉得本模板有帮助：
-- ⭐ 点赞本仓库
-- 🐛 报告 bug
-- 💡 建议新功能
-- 📝 改进文档
+If you find this template helpful:
+- ⭐ Star this repository
+- 🐛 Report bugs
+- 💡 Suggest features
+- 📝 Improve documentation
 
 ---
 
-**使用 ❤️ 为 Claude Code 社区制作**
+**Made with ❤️ for the Claude Code community**
