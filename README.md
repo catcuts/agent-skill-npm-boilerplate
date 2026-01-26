@@ -1,5 +1,7 @@
 # Agent Skill NPM Boilerplate
 
+English | [中文](./README.zh-CN.md)
+
 > **Distribute AI agent skills like any other npm package**
 
 AI coding tools (Claude Code, Cursor, Windsurf) support custom "skills" - reusable instructions that extend agent capabilities. But distributing them means manual file copying, no versioning, and painful updates.
@@ -23,8 +25,6 @@ npm update -g @your-org/git-commit-helper
 ---
 
 **Quick start:** Fork this template, edit `SKILL.md`, run `npm publish`. Your skill is now installable worldwide.
-
-**中文文档**: [README.zh-CN.md](README.zh-CN.md)
 
 ## 💡 Why npm for Skills?
 

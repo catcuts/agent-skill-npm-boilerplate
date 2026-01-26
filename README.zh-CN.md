@@ -1,5 +1,7 @@
 # Agent Skill NPM Boilerplate
 
+[English](./README.md) | 中文
+
 > **像发布 npm 包一样分发 AI Agent 技能**
 
 AI 编程工具（Claude Code、Cursor、Windsurf）支持自定义"技能"（Skills）—— 可复用的指令，用于扩展 Agent 的能力。但手动分发技能意味着复制文件、没有版本控制、更新困难。
@@ -23,8 +25,6 @@ npm update -g @your-org/git-commit-helper
 ---
 
 **快速开始**：Fork 本模板，编辑 `SKILL.md`，运行 `npm publish`。你的技能现在可以全球安装了。
-
-**English Documentation**: [README.md](README.md)
 
 ## 💡 为什么用 npm 管理技能？
 
