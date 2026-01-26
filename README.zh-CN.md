@@ -26,6 +26,8 @@ npm update -g @your-org/your-skill
 
 **快速开始**：Fork 本模板，编辑 `SKILL.md`，运行 `npm publish`。你的技能现在可以全球安装了。
 
+**支持平台**: 基于 [Vercel 开源的 add-skill](https://github.com/vercel-labs/add-skill)，使用本模板创建的技能支持 Opencode、Claude Code、Codex、Cursor 及其他 [19 个工具](https://github.com/vercel-labs/add-skill?tab=readme-ov-file#available-agents)。详见：`scripts` 代码。
+
 ## 💡 为什么用 npm 管理技能？
 
 手动分发技能需要下载文件、复制到 `~/.claude/skills/`，每次更新都要重复这些步骤。没有版本控制，没有依赖管理，没有发现机制。
