@@ -30,7 +30,7 @@ npm update -g @your-org/your-skill
 
 ## 💡 Why npm for Skills?
 
-There are three ways to distribute AI agent skills. Let's compare them:
+There are multiple ways to distribute AI agent skills. Let's compare them:
 
 ### 1. Manual File Copying (❌ Not Recommended)
 
@@ -51,7 +51,23 @@ cp -r skills/my-skill ~/.claude/skills/
 - No discoverability
 - Error-prone
 
-### 2. Vercel's add-skill (✅ Good for Git Repos)
+### 2. CLI Installer Tools (✅ Good for Git Repos)
+
+Three popular tools in the community:
+
+#### A. `npx skills` (Vercel's Manager)
+
+```bash
+# Install skills package (manager layer)
+npm i -g skills
+
+# Install from git repository
+npx skills i vercel-labs/agent-skills
+```
+
+**[Skills](https://www.npmjs.com/package/skills)** is Vercel's skill management tool that wraps [`add-skill`](https://github.com/vercel-labs/add-skill) with additional features.
+
+#### B. `npx add-skill` (Vercel's Core Tool)
 
 ```bash
 # Install directly from git repository
@@ -64,11 +80,26 @@ npx add-skill vercel-labs/agent-skills --skill frontend-design
 npx add-skill vercel-labs/agent-skills -a claude-code -a cursor
 ```
 
-**Benefits:**
+**[add-skill](https://github.com/vercel-labs/add-skill)** is Vercel's underlying installation tool.
+
+#### C. `npx openskills` (Community Alternative)
+
+```bash
+# Install openskills globally
+npm i -g openskills
+
+# Install skills
+openskills install anthropics/skills --global
+```
+
+**[OpenSkills](https://www.npmjs.com/package/openskills)** is a universal skills installer by the community.
+
+**Benefits of CLI tools:**
 - ✅ Git-based distribution
 - ✅ Works with 23+ AI coding tools
 - ✅ No configuration needed
 - ✅ Agent-agnostic ecosystem
+- ✅ Quick installation from any git repo
 
 **Limitations:**
 - ⚠️ No semantic versioning (uses git commits)
@@ -108,22 +139,27 @@ npm install --save-dev @your-org/skill-name
 - You want global discoverability
 - You're building for enterprise/teams
 
-**Use add-skill when:**
+**Use CLI tools when:**
 - Developing skills locally
 - Testing skills from git repos
 - Distributing internal/team skills
 - You don't need versioning
 
+**Tool recommendation:**
+- **Most users**: Use `npx skills` (easiest, most feature-rich)
+- **Developers**: Use `npx add-skill` (more control, direct access)
+- **Alternative**: Use `npx openskills` (community-driven, universal)
+
 **Best of both worlds:**
 This template combines both approaches! Skills created with this template:
 - ✅ Can be published to npm for versioned distribution
-- ✅ Can also be installed via `npx add-skill` from git repos
+- ✅ Can also be installed via CLI tools from git repos
 - ✅ Include automatic install scripts using `add-skill` under the hood
 
 **Example workflow:**
 ```bash
-# Development: Use add-skill for testing
-npx add-skill github.com/your-org/your-skill --skill my-skill
+# Development: Use CLI tools for testing
+npx skills i github.com/your-org/your-skill
 
 # Production: Use npm for stable releases
 npm install -g @your-org/your-skill
