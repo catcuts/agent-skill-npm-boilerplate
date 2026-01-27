@@ -3,6 +3,10 @@ name: YOUR-SKILL-NAME
 description: A clear description of what this skill does and when to use it. Include specific keywords that users would naturally say. Use when [specific scenarios].
 allowed-tools: Read, Bash, Write
 version: 1.0.0
+
+# Optional metadata
+metadata:
+  internal: false  # Set to true to hide this skill
 ---
 
 # Your Skill Name

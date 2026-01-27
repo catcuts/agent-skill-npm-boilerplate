@@ -16,7 +16,7 @@
     "scripts/"
   ],
   "optionalDependencies": {
-    "add-skill": "^1.0.29"
+    "skills": "^1.1.2"
   },
   "keywords": [
     "claude-code",
