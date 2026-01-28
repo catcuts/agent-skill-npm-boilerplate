@@ -26,7 +26,7 @@ npm update -g @your-org/your-skill
 
 **Quick start:** Fork this template, edit `SKILL.md`, run `npm publish`. Your skill is now installable worldwide.
 
-**Supported Platforms:** Based on [Vercel's open-source add-skill](https://github.com/vercel-labs/add-skill), skills created with this template support Opencode, Claude Code, Codex, Cursor, and [19 more tools](https://github.com/vercel-labs/add-skill?tab=readme-ov-file#available-agents). See `scripts` for details.
+**Supported Platforms:** Based on [Vercel's open-source add-skill](https://github.com/vercel-labs/add-skill), skills created with this template support Opencode, Claude Code, Codex, Cursor, and [23 more tools](https://github.com/vercel-labs/skills?tab=readme-ov-file#supported-agents). See `scripts` for details.
 
 ## 💡 Why npm for Skills?
 
