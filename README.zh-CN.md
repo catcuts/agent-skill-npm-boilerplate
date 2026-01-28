@@ -80,7 +80,7 @@ npx add-skill vercel-labs/agent-skills --skill frontend-design
 npx add-skill vercel-labs/agent-skills -a claude-code -a cursor
 ```
 
-**[add-skill](https://github.com/vercel-labs/add-skill)** 是 Vercel 的底层安装工具。
+**[skills](https://github.com/vercel-labs/skills)** 是 Vercel 的底层安装工具。
 
 #### C. `npx openskills`（社区替代方案）
 
