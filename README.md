@@ -67,17 +67,17 @@ npx skills i vercel-labs/agent-skills
 
 **[Skills](https://www.npmjs.com/package/skills)** is Vercel's skill management tool that wraps [`add-skill`](https://github.com/vercel-labs/add-skill) with additional features.
 
-#### B. `npx add-skill` (Vercel's Core Tool)
+#### B. `npx skills` (Vercel's Core Tool)
 
 ```bash
 # Install directly from git repository
-npx add-skill vercel-labs/agent-skills
+npx skills vercel-labs/agent-skills
 
 # Install specific skill
-npx add-skill vercel-labs/agent-skills --skill frontend-design
+npx skills vercel-labs/agent-skills --skill frontend-design
 
 # Install to specific agents
-npx add-skill vercel-labs/agent-skills -a claude-code -a cursor
+npx skills vercel-labs/agent-skills -a claude-code -a cursor
 ```
 
 **[skills](https://github.com/vercel-labs/skills)** is Vercel's underlying installation tool.
@@ -147,7 +147,7 @@ npm install --save-dev @your-org/skill-name
 
 **Tool recommendation:**
 - **Most users**: Use `npx skills` (easiest, most feature-rich)
-- **Developers**: Use `npx add-skill` (more control, direct access)
+- **Developers**: Use `npx skills` (more control, direct access)
 - **Alternative**: Use `npx openskills` (community-driven, universal)
 
 **Best of both worlds:**

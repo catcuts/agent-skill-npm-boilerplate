@@ -67,17 +67,17 @@ npx skills i vercel-labs/agent-skills
 
 **[Skills](https://www.npmjs.com/package/skills)** 是 Vercel 的技能管理工具，封装了 [`add-skill`](https://github.com/vercel-labs/add-skill) 并提供额外功能。
 
-#### B. `npx add-skill`（Vercel 核心工具）
+#### B. `npx skills`（Vercel 核心工具）
 
 ```bash
 # 直接从 git 仓库安装
-npx add-skill vercel-labs/agent-skills
+npx skills vercel-labs/agent-skills
 
 # 安装特定技能
-npx add-skill vercel-labs/agent-skills --skill frontend-design
+npx skills vercel-labs/agent-skills --skill frontend-design
 
 # 安装到特定工具
-npx add-skill vercel-labs/agent-skills -a claude-code -a cursor
+npx skills vercel-labs/agent-skills -a claude-code -a cursor
 ```
 
 **[skills](https://github.com/vercel-labs/skills)** 是 Vercel 的底层安装工具。
@@ -147,7 +147,7 @@ npm install --save-dev @your-org/skill-name
 
 **工具推荐**：
 - **大多数用户**：使用 `npx skills`（最简单，功能最丰富）
-- **开发者**：使用 `npx add-skill`（更多控制，直接访问）
+- **开发者**：使用 `npx skills`（更多控制，直接访问）
 - **替代方案**：使用 `npx openskills`（社区驱动，通用性强）
 
 **两全其美**：
